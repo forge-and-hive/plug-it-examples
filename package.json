@@ -9,6 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@forgehive/runner": "^0.1.4",
+    "@forgehive/schema": "^0.1.4",
+    "@forgehive/task": "^0.1.4",
+    "@prisma/client": "6.5.0",
     "astro": "^5.5.6"
+  },
+  "devDependencies": {
+    "prisma": "^6.5.0"
   }
 }

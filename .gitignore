@@ -20,5 +20,11 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
-.idea/
+# prisma
+generated/
+prisma/migrations/
+prisma/dev.db
+prisma/dev.db-journal
+
+# forge
+logs/
