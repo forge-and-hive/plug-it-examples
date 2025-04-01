@@ -6,7 +6,7 @@
 import { createTask } from '@forgehive/task'
 import { Schema } from '@forgehive/schema'
 
-import { PrismaClient } from '../../../generated/prisma'
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient()
 
@@ -33,3 +33,5 @@ export const addProduct = createTask(
     return product
   }
 )
+
+addProduct.setDescription('Add a product to the catalog')

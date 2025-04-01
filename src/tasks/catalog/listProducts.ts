@@ -4,13 +4,11 @@
 
 import { createTask } from '@forgehive/task'
 import { Schema } from '@forgehive/schema'
-import { PrismaClient } from '../../../generated/prisma'
+import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-const schema = new Schema({
-  // No parameters needed for this task
-})
+const schema = new Schema({})
 
 const boundaries = {
   listAvailableProducts: async () => {
@@ -27,8 +25,8 @@ const boundaries = {
 export const listProducts = createTask(
   schema,
   boundaries,
-  async function (_argv, boundaries) {
-    const products = await boundaries.listAvailableProducts()
+  async function ({}, { listAvailableProducts }) {
+    const products = await listAvailableProducts()
 
     const productsWithoutTimestamps = products.map((product) => {
       const { createdAt, updatedAt, ...rest } = product
@@ -38,3 +36,5 @@ export const listProducts = createTask(
     return productsWithoutTimestamps
   }
 )
+
+listProducts.setDescription('List all available products in the catalog')

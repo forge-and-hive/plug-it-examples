@@ -4,7 +4,8 @@
 
 import { createTask } from '@forgehive/task'
 import { Schema } from '@forgehive/schema'
-import { PrismaClient } from '../../../generated/prisma'
+
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient()
 
@@ -48,3 +49,5 @@ export const restock = createTask(
     }
   }
 )
+
+restock.setDescription('Restock a product')

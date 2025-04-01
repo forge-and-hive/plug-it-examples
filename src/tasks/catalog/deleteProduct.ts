@@ -4,7 +4,7 @@
 
 import { createTask } from '@forgehive/task'
 import { Schema } from '@forgehive/schema'
-import { PrismaClient } from '../../../generated/prisma'
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient()
 
@@ -39,3 +39,5 @@ export const deleteProduct = createTask(
     return { message: `Product with id ${argv.id} deleted successfully` }
   }
 )
+
+deleteProduct.setDescription('Delete a product from the catalog')
