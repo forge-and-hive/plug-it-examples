@@ -1,24 +1,21 @@
 ---
-import { actions } from 'astro:actions';
-
 import Layout from '../layouts/Layout.astro';
-import ProductList from '../components/ProductList';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
-
-// console.log('inventory', actions.inventory.listProducts)
-// const result = await Astro.callAction(actions.inventory.addProduct, {
-//   name: 'iPhone 16',
-//   quantity: 10
-// })
-// console.log('result', result);
 ---
 
 <Layout>
 	<div class="container mx-auto p-4">
-		<div class="mt-8">
-			<ProductList client:load />
+		<div class="max-w-2xl mx-auto mt-10 text-center">
+			<h1 class="text-4xl font-bold mb-6">Inventory Management System</h1>
+			<p class="text-lg mb-10">Welcome to the inventory management system. Choose an option below:</p>
+			
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href="/chat" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg transition-colors text-lg">
+					Chat Assistant
+				</a>
+				<a href="/ui" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg transition-colors text-lg">
+					UI Dashboard
+				</a>
+			</div>
 		</div>
 	</div>
-</Layout>
+</Layout> 
