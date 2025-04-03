@@ -33,6 +33,10 @@
     "stock:restock": {
       "path": "src/tasks/stock/restock.ts",
       "handler": "restock"
+    },
+    "agent:chat": {
+      "path": "src/tasks/agent/chat.ts",
+      "handler": "chat"
     }
   },
   "runners": {}
