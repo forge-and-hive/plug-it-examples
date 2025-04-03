@@ -1,0 +1,17 @@
+---
+const pathname = Astro.url.pathname;
+---
+
+<nav class="bg-gray-800 p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="/" class="text-white font-bold text-xl">Inventory System</a>
+    <div class="flex gap-4">
+      <a href="/chat" class={`text-white py-1 px-3 rounded transition-colors ${pathname === '/chat' ? 'bg-blue-600' : 'hover:bg-gray-700'}`}>
+        Chat
+      </a>
+      <a href="/ui" class={`text-white py-1 px-3 rounded transition-colors ${pathname === '/ui' ? 'bg-blue-600' : 'hover:bg-gray-700'}`}>
+        UI Dashboard
+      </a>
+    </div>
+  </div>
+</nav> 

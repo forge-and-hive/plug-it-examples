@@ -13,7 +13,7 @@ export default function ProductList() {
     try {
       setLoading(true);
       const result = await actions.inventory.listProducts({});
-      console.log('result', result);
+
       setProducts(result.data);
       setError(null);
     } catch (err) {
