@@ -2,10 +2,21 @@ import { defineAction } from 'astro:actions';
 import { z } from 'astro:schema';
 
 import { Schema } from '@forgehive/schema';
-import { type Task } from '@forgehive/task';
 import { type Runner } from '@forgehive/runner';
+import { type TaskInstanceType } from '@forgehive/task';
 
 import runner from '../runner'
+import { chat } from '../tasks/agent/chat'
+
+const taskToAction = (task: TaskInstanceType) => {
+  const schema = task.getSchema() ?? new Schema({});
+  return defineAction({
+    input: schema.asZod(),
+    handler: async (input) => {
+      return task.run(input)
+    }
+  })
+}
 
 const toActions = (runner: Runner) => {
   const tasks = runner.getTasks()
@@ -31,15 +42,9 @@ const toActions = (runner: Runner) => {
 }
 
 const runnerActions = toActions(runner)
+const chatAction = taskToAction(chat)
 
 export const server = {
-  getGreeting: defineAction({
-    input: z.object({
-      name: z.string(),
-    }),
-    handler: async (input) => {
-      return `Hello, ${input.name}!`
-    }
-  }),
-  inventory: runnerActions
+  inventory: runnerActions,
+  chat: chatAction
 }
