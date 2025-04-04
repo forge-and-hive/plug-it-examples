@@ -7,9 +7,11 @@ import { type TaskInstanceType } from '@forgehive/task';
 
 import runner from '../runner'
 import { chat } from '../tasks/agent/chat'
+import { description } from '../tasks/runner/description'
 
 const taskToAction = (task: TaskInstanceType) => {
   const schema = task.getSchema() ?? new Schema({});
+
   return defineAction({
     input: schema.asZod(),
     handler: async (input) => {
@@ -18,7 +20,7 @@ const taskToAction = (task: TaskInstanceType) => {
   })
 }
 
-const toActions = (runner: Runner) => {
+const runnerToActions = (runner: Runner) => {
   const tasks = runner.getTasks()
 
   const actions: Record<string, ReturnType<typeof defineAction>> = {}
@@ -41,10 +43,12 @@ const toActions = (runner: Runner) => {
   return actions
 }
 
-const runnerActions = toActions(runner)
+const runnerActions = runnerToActions(runner)
 const chatAction = taskToAction(chat)
+const descriptionAction = taskToAction(description)
 
 export const server = {
   inventory: runnerActions,
-  chat: chatAction
+  chat: chatAction,
+  description: descriptionAction
 }
