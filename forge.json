@@ -37,6 +37,14 @@
     "agent:chat": {
       "path": "src/tasks/agent/chat.ts",
       "handler": "chat"
+    },
+    "catalog:flagProduct": {
+      "path": "src/tasks/catalog/flagProduct.ts",
+      "handler": "flagProduct"
+    },
+    "runner:description": {
+      "path": "src/tasks/runner/description.ts",
+      "handler": "description"
     }
   },
   "runners": {}
