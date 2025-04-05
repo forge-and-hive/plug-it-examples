@@ -1,0 +1,51 @@
+{
+  "project": {
+    "name": "ChangeMePls"
+  },
+  "paths": {
+    "logs": "logs/",
+    "tasks": "src/tasks/",
+    "runners": "src/runners/",
+    "fixtures": "src/tests/fixtures",
+    "tests": "src/tests/"
+  },
+  "infra": {
+    "region": "us-west-2",
+    "bucket": ""
+  },
+  "tasks": {
+    "catalog:addProduct": {
+      "path": "src/tasks/catalog/addProduct.ts",
+      "handler": "addProduct"
+    },
+    "catalog:listProducts": {
+      "path": "src/tasks/catalog/listProducts.ts",
+      "handler": "listProducts"
+    },
+    "catalog:deleteProduct": {
+      "path": "src/tasks/catalog/deleteProduct.ts",
+      "handler": "deleteProduct"
+    },
+    "stock:sell": {
+      "path": "src/tasks/stock/sell.ts",
+      "handler": "sell"
+    },
+    "stock:restock": {
+      "path": "src/tasks/stock/restock.ts",
+      "handler": "restock"
+    },
+    "agent:chat": {
+      "path": "src/tasks/agent/chat.ts",
+      "handler": "chat"
+    },
+    "catalog:flagProduct": {
+      "path": "src/tasks/catalog/flagProduct.ts",
+      "handler": "flagProduct"
+    },
+    "runner:description": {
+      "path": "src/tasks/runner/description.ts",
+      "handler": "description"
+    }
+  },
+  "runners": {}
+}

@@ -1,12 +1,14 @@
 {
-  "name": "",
+  "name": "plug-it-monorepo",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev:ui": "pnpm --filter @plugit/ui dev",
+    "dev:core": "pnpm --filter @plugit/core dev",
+    "build": "pnpm --filter \"@plugit/*\" build",
+    "build:core": "pnpm --filter @plugit/core build",
+    "build:ui": "pnpm --filter @plugit/ui build",
+    "prisma:generate": "pnpm --filter @plugit/core prisma:generate"
   },
   "workspaces": [
     "packages/*"
@@ -26,19 +28,8 @@
     "vite": "^6.2.4"
   },
   "devDependencies": {
-    "@astrojs/react": "^4.2.3",
-    "@astrojs/tailwind": "^6.0.2",
     "@nrwl/nx-cloud": "^19.1.0",
-    "@tailwindcss/postcss": "^4.0.17",
-    "@types/node": "^22.14.0",
-    "@types/react": "^19.1.0",
-    "autoprefixer": "^10.4.21",
     "lerna": "^8.2.1",
-    "nx": "^20.7.1",
-    "postcss": "^8.5.3",
-    "prisma": "^6.5.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "tailwindcss": "^4.0.17"
+    "nx": "^20.7.1"
   }
 }
