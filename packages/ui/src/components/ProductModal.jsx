@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { actions } from 'astro:actions';
 
-export default function ProductModal({ product, onClose, onProductUpdated }) {
+export default function ProductModal({ product: initialProduct, onClose, onProductUpdated }) {
+  const [product, setProduct] = useState(initialProduct);
   const [action, setAction] = useState('sell');
   const [amount, setAmount] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -23,12 +24,20 @@ export default function ProductModal({ product, onClose, onProductUpdated }) {
           amount: Number(amount)
         });
         setSuccess(`Sold ${amount} units of ${product.name}`);
+        setProduct(prev => ({
+          ...prev,
+          quantity: result.data.available
+        }));
       } else if (action === 'restock') {
         result = await actions.inventory.restock({
           productId: product.id,
           amount: Number(amount)
         });
         setSuccess(`Restocked ${amount} units of ${product.name}`);
+        setProduct(prev => ({
+          ...prev,
+          quantity: result.data.available
+        }));
       } else if (action === 'delete') {
         result = await actions.inventory.deleteProduct({
           id: product.id
