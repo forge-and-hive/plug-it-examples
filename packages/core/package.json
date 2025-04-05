@@ -1,0 +1,27 @@
+{
+  "name": "@plugit/core",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prisma:generate": "prisma generate"
+  },
+  "dependencies": {
+    "@forgehive/runner": "^0.1.4",
+    "@forgehive/schema": "^0.1.4",
+    "@forgehive/task": "^0.1.4",
+    "@langchain/core": "^0.3.43",
+    "@langchain/langgraph": "^0.2.62",
+    "@langchain/openai": "^0.5.2",
+    "@prisma/client": "6.5.0",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "prisma": "^6.5.0",
+    "typescript": "^5.3.3"
+  }
+} 

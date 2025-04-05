@@ -26,5 +26,7 @@ prisma/migrations/
 prisma/dev.db
 prisma/dev.db-journal
 
+packages/core/prisma/dev.db
+
 # forge
 logs/
