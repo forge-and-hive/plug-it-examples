@@ -31,7 +31,12 @@ const runnerToActions = (runner: Runner) => {
     actions[name] = defineAction({
       input: zodSchema,
       handler: async (input: z.infer<typeof zodSchema>) => {
-        return task.run(input)
+        try {
+          return task.run(input)
+        } catch (error) {
+          console.error(`Error running task ${name}:`, error);
+          return { error: `Failed to run task: ${error.message}` };
+        }
       }
     })
   })

@@ -4,18 +4,14 @@
 
 import { createTask } from '@forgehive/task'
 import { Schema } from '@forgehive/schema'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '../../lib/prisma'
 import type { Product } from '@prisma/client'
 
-const prisma = new PrismaClient()
-
 const schema = new Schema({
-  // Add your schema definitions here
   productId: Schema.number()
 })
 
 const boundaries = {
-  // Add your boundary functions here
   findProduct: async (id: number): Promise<Product | null> => {
     return prisma.product.findUnique({
       where: { id }

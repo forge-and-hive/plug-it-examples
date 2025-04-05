@@ -4,9 +4,7 @@
 
 import { createTask } from '@forgehive/task'
 import { Schema } from '@forgehive/schema'
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient()
+import { prisma } from '../../lib/prisma'
 
 const schema = new Schema({
   id: Schema.number()

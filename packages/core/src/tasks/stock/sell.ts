@@ -4,9 +4,7 @@
 
 import { createTask } from '@forgehive/task'
 import { Schema } from '@forgehive/schema'
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient()
+import { prisma } from '../../lib/prisma';
 
 const schema = new Schema({
   productId: Schema.number(),
@@ -17,13 +15,13 @@ const boundaries = {
   findProduct: async (id: number) => {
     return prisma.product.findUnique({
       where: { id }
-    })
+    });
   },
   updateProductStock: async (id: number, newQuantity: number) => {
     return prisma.product.update({
       where: { id },
       data: { quantity: newQuantity }
-    })
+    });
   }
 }
 
